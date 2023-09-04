@@ -32,20 +32,29 @@ const port = 8080
 
 
 
-
+// Middleware to parse JSON requests
 app.use(express.json())
 
-mongoose.connect('mongodb+srv://leninacosta2107:leadyglm8788@cluster0.kdvajd8.mongodb.net/?retryWrites=true&w=majority')
-.then(()=>{
-    console.log("Conectado a la BD de Mongo Atlas");
+mongoose.connect('mongodb+srv://leninacosta1987:integratingproject@cluster0.a73oj0s.mongodb.net/?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 })
-.catch(error=>{
-    console.error("Error en la conexion", error);;
+.then(() => {
+    console.log("Connected to MongoDB Atlas");
 })
+.catch((error) => {
+    console.error("Error connecting to MongoDB Atlas:", error);
+});
 
 
-app.use('/api', apiRouter); // Use the renamed route file
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
 
+
+app.use('/api', apiRouter); 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
