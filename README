@@ -1,0 +1,24 @@
+# E-Commerce API Server
+
+This is a Node.js Express server for an E-Commerce application with MongoDB Atlas as the database and Mongoose for data modeling.
+
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Database](#database)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Installation
+
+1. Clone this repository.
+   ```bash
+   git clone https://github.com/your-username/e-commerce-api.git
+
+
+### Navigate to Project Directory 
+
+ ```bash
+  cd e-commerce-api

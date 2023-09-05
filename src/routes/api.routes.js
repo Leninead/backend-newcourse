@@ -1,10 +1,12 @@
 const {Router} = require("express")
 const { userModel } = require("../models/user.model")
 const { productModel } = require('../models/product.model')
-
+const { userController } = require("../controllers/userController")
+const { productController } =require("../controllers/productController")
 const router = Router()
 
 // GET all users
+
 router.get("/users", async (req, res) => {
     try {
         let users = await userModel.find();
@@ -16,16 +18,23 @@ router.get("/users", async (req, res) => {
 });
 
 // POST a new user
-router.post("/users", async (req, res) =>{
-    let { nombre, email } = req.body; 
+// POST a new user
+router.post("/users", async (req, res) => {
+    try {
+        const { nombre, email } = req.body;
 
-    if (!nombre || !email) {
-        res.send({ result: "error", error: "Missing parameters" });
+        if (!nombre || !email) {
+            return res.status(400).json({ result: "error", error: "Missing parameters" });
+        }
+
+        const newUser = await userModel.create({ nombre, email });
+        res.status(201).json({ result: "success", payload: newUser });
+    } catch (error) {
+        console.error("Error creating user:", error);
+        res.status(500).json({ result: "error", error: "An error occurred" });
     }
-    let result = await userModel.create({ nombre, email }); // Remove 'apellido'
-    res.send({ result: "success", payload: result });
+});
 
-})
 
 // PUT update user by ID
 
