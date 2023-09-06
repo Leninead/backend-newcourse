@@ -1,24 +1,79 @@
-# E-Commerce API Server
+# E-Commerce API
 
-This is a Node.js Express server for an E-Commerce application with MongoDB Atlas as the database and Mongoose for data modeling.
+This is a simple E-Commerce API built using Node.js, Express, MongoDB, and Mongoose. It provides endpoints for managing users and products.
 
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Database](#database)
-- [Screenshots](#screenshots)
-- [Contributing](#contributing)
-- [License](#license)
+## Features
 
-## Installation
+- Create, Read, Update, and Delete (CRUD) operations for users and products.
+- MongoDB Atlas integration for data storage.
+- Mongoose for data modeling.
+- Secure and structured API routes.
 
-1. Clone this repository.
+## Prerequisites
+
+Before running the API, make sure you have the following installed:
+
+- Node.js: [Download](https://nodejs.org/)
+- MongoDB Atlas: [Sign Up](https://www.mongodb.com/cloud/atlas)
+
+## Getting Started
+
+1. Clone this repository:
+
    ```bash
    git clone https://github.com/your-username/e-commerce-api.git
 
 
-### Navigate to Project Directory 
+### Navigate to the project directory:
+<!-- ```bash
+cd e-commerce-api -->
 
- ```bash
-  cd e-commerce-api
+
+### Install dependencies:
+
+
+npm install 
+
+### Create a .env file in the project root and add your MongoDB Atlas connection string as follows:
+
+
+MONGODB_URI=your-mongodb-atlas-connection-string
+ 
+
+### Start the API server:
+
+
+npm start
+ 
+
+### The server will start at
+
+http://localhost:8080
+ 
+
+ ## API Endpoints
+
+
+
+*GET /api/users: Get all users.
+
+*POST /api/users: Create a new user.
+
+*PUT /api/users/:uid: Update a user by ID.
+
+*DELETE /api/users/:uid: Delete a user by ID. -->
+
+###  Products
+
+
+*GET /api/products: Get all products.
+
+*POST /api/products: Create a new product.
+
+*PUT /api/products/:pid: Update a product by ID.
+
+*DELETE /api/products/:pid: Delete a product by ID. -->
+
+### Usage
+
+You can use a tool like Postman to test the API endpoints. Import the provided Postman collection for easier testing.
