@@ -77,3 +77,19 @@ http://localhost:8080
 ### Usage
 
 You can use a tool like Postman to test the API endpoints. Import the provided Postman collection for easier testing.
+
+
+### MongoDB Atlas Collections
+
+Here is a capture of my MongoDB Atlas collections:
+
+![MongoDB Atlas Collections](./src/img/mongodbatlas.jpg.jpeg)
+
+
+### Postman Error
+
+I encountered an error in Postman while testing my API endpoints. The error message is as follows:
+
+
+
+![MongoDB Atlas Collections](./src/img/postmanerror.jpg.jpeg)
