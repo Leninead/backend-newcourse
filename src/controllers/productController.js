@@ -22,8 +22,8 @@ exports.getAllProducts = async (req, res) => {
     }
 };
 
-// Get a product by ID
-exports.getProductById = async (req, res) => {
+
+exports.getProduct = async (req, res) => {
     const { pid } = req.params;
     try {
         const product = await productModel.findById(pid);

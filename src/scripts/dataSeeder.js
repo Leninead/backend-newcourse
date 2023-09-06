@@ -77,7 +77,7 @@ async function seedDatabase() {
     const seededProducts = await productModel.insertMany(products);
     console.log("Seeded products:", seededProducts);
 
-    // Add any additional seeding logic here
+  
 
     console.log("Database seeding complete.");
   } catch (error) {

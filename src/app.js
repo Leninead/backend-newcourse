@@ -50,11 +50,12 @@ mongoose.connect('mongodb+srv://leninacosta1987:integratingproject@cluster0.a73o
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Something went wrong!');
+  res.status(500).json({ error: 'Something went wrong!' });
 });
 
 
 app.use('/api', apiRouter); 
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

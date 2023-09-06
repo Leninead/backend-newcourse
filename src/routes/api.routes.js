@@ -1,106 +1,37 @@
-const {Router} = require("express")
-const { userModel } = require("../models/user.model")
-const { productModel } = require('../models/product.model')
-const { userController } = require("../controllers/userController")
-const { productController } =require("../controllers/productController")
-const router = Router()
+const { Router } = require("express");
+const userController = require("../controllers/userController"); // Import the user controller
+const productController = require("../controllers/productController"); // Import the product controller
+
+const router = Router();
 
 // GET all users
-
-router.get("/users", async (req, res) => {
-    try {
-        let users = await userModel.find();
-        res.send({ result: "success", payload: users });
-    } catch (error) {
-        console.log(error);
-        res.status(500).send({ result: "error", message: "An error occurred" });
-    }
-});
+router.get("/api/users", userController.getAllUsers);
 
 // POST a new user
-// POST a new user
-router.post("/users", async (req, res) => {
-    try {
-        const { nombre, email } = req.body;
-
-        if (!nombre || !email) {
-            return res.status(400).json({ result: "error", error: "Missing parameters" });
-        }
-
-        const newUser = await userModel.create({ nombre, email });
-        res.status(201).json({ result: "success", payload: newUser });
-    } catch (error) {
-        console.error("Error creating user:", error);
-        res.status(500).json({ result: "error", error: "An error occurred" });
-    }
-});
-
+router.post("/api/users", userController.createUser);
 
 // PUT update user by ID
-
-router.put("/users/:uid", async(req, res)=>{
-    let { uid } = req.params
-
-    let userToReplace = req.body
-    if (!userToReplace.nombre || !userToReplace.email) {
-        res.send({ status: "error", error: "Missing body params"})
-    }
-    let result = await userModel.updateOne({ _id: uid} ,userToReplace);
-    res.send({ result: "success", payload: result})
-})
+router.put("/api/users/:uid", userController.updateUserById);
 
 // DELETE user by ID
+router.delete("/api/users/:uid", userController.deleteUserById);
 
-router.delete("/users/:uid", async (req, res) => {
-    let { uid } = req.params;
-    let result = await userModel.deleteOne({ _id: uid });
-    res.send({ result: "success", payload: result });
-});
 
+
+
+// Update the route name to match the controller function
+router.get("/api/products/:pid", productController.getProduct);
 
 // GET all products
-router.get("/products", async (req, res) => {
-    try {
-        let products = await productModel.find()
-        res.send({ result: "success", payload: products})
-        
-    } catch (error) {
-        console.log(error);
-        res.status(500).send({ result: "error", message: "An error ocurred"})
-    }
-})
+router.get("/api/products", productController.getAllProducts);
 
 // POST a new product
-
-router.post("/products", async (req, res) => {
-    let { name, category, price, stock, image } = req.body;
-
-    if (!name || !category || !price || !stock) {
-        res.send({ result: "error", error: "Missing parameters" });
-    }
-    let result = await productModel.create({ name, category, price, stock, image });
-    res.send({ result: "success", payload: result });
-});
+router.post("/api/products", productController.createProduct);
 
 // PUT update product by ID
-router.put("/products/:pid", async (req, res) => { // Update route path
-    let { pid } = req.params;
-
-    let productToUpdate = req.body;
-    if (!productToUpdate.name || !productToUpdate.category || !productToUpdate.price || !productToUpdate.stock) {
-        res.send({ status: "error", error: "Missing body params" });
-    }
-    let result = await productModel.updateOne({ _id: pid }, productToUpdate);
-    res.send({ result: "success", payload: result });
-});
+router.put("/api/products/:pid", productController.updateProductById);
 
 // DELETE product by ID
-router.delete("/products/:pid", async (req, res) => { // Update route path
-    let { pid } = req.params;
-    let result = await productModel.deleteOne({ _id: pid });
-    res.send({ result: "success", payload: result });
-});
+router.delete("/api/products/:pid", productController.deleteProductById);
 
-
-
-module.exports = router
+module.exports = router;
