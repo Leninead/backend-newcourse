@@ -81,15 +81,38 @@ You can use a tool like Postman to test the API endpoints. Import the provided P
 
 ### MongoDB Atlas Collections
 
-Here is a capture of my MongoDB Atlas collections:
+Here is a GIF of my MongoDB Atlas collections:
 
-![MongoDB Atlas Collections](./src/img/mongodbatlas.jpg.jpeg)
-
-
-### Postman Error
-
-I encountered an error in Postman while testing my API endpoints. The error message is as follows:
+![MongoDB Atlas GIF](src/gif/mongodbatlas.gif)
 
 
 
-![MongoDB Atlas Collections](./src/img/postmanerror.jpg.jpeg)
+
+### Postman 
+
+1. Get all the Users
+   ![Image 1 Alt Text](./src/img/users/get-all-users.jpg.jpeg)
+
+2. Post User
+   ![Image 2 Alt Text](./src/img/users/post-users-alice.jpg.jpeg)
+
+3. Put User
+   ![Image 3 Alt Text](./src/img/users/put-user.jpg.jpeg)
+
+4. Delete User
+   ![Image 4 Alt Text](./src/img/users/delete-user.jpg.jpeg)
+
+5. Get all the Products
+   ![Image 5 Alt Text](./src/img/products/get-all-products.jpg.jpeg)
+
+6. Post Product
+   ![Image 6 Alt Text](./src/img/products/product1.jpg.jpeg)
+
+7. Put Product
+   ![Image 7 Alt Text](./src/img/products/put-product.jpg.jpeg)
+
+8. Delete Product
+   ![Image 8 Alt Text](./src/img/products/delete-product.jpg.jpeg)
+
+
+
