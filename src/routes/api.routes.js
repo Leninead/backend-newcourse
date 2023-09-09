@@ -5,7 +5,7 @@ const { productModel } = require("../models/product.model");
 const router = Router();
 
 // GET all users
-router.get("/api/users", async (req, res) => {
+router.get("/users", async (req, res) => {
     try {
         console.log("GET all users route called");
         const users = await userModel.find();
@@ -16,7 +16,7 @@ router.get("/api/users", async (req, res) => {
 });
 
 // POST a new user
-router.post("/api/users", async (req, res) => {
+router.post("/users", async (req, res) => {
     try {
         const { nombre, email } = req.body;
         const newUser = new userModel({ nombre, email });
@@ -28,7 +28,7 @@ router.post("/api/users", async (req, res) => {
 });
 
 // PUT update user by ID
-router.put("/api/users/:uid", async (req, res) => {
+router.put("/users/:uid", async (req, res) => {
     const { uid } = req.params;
     const userToUpdate = req.body;
     try {
@@ -43,7 +43,7 @@ router.put("/api/users/:uid", async (req, res) => {
 });
 
 // DELETE user by ID
-router.delete("/api/users/:uid", async (req, res) => {
+router.delete("/users/:uid", async (req, res) => {
     const { uid } = req.params;
     try {
         const deletedUser = await userModel.findByIdAndRemove(uid);
@@ -57,7 +57,7 @@ router.delete("/api/users/:uid", async (req, res) => {
 });
 
 // GET all products
-router.get("/api/products", async (req, res) => {
+router.get("/products", async (req, res) => {
     try {
         const products = await productModel.find();
         res.status(200).json({ message: "Products retrieved successfully", products });
@@ -67,7 +67,7 @@ router.get("/api/products", async (req, res) => {
 });
 
 // POST a new product
-router.post("/api/products", async (req, res) => {
+router.post("/products", async (req, res) => {
     try {
         const { name, category, price, stock, image } = req.body;
         const newProduct = new productModel({ name, category, price, stock, image });
@@ -79,7 +79,7 @@ router.post("/api/products", async (req, res) => {
 });
 
 // PUT update product by ID
-router.put("/api/products/:pid", async (req, res) => {
+router.put("/products/:pid", async (req, res) => {
     const { pid } = req.params;
     const productToUpdate = req.body;
     try {
@@ -94,7 +94,7 @@ router.put("/api/products/:pid", async (req, res) => {
 });
 
 // DELETE product by ID
-router.delete("/api/products/:pid", async (req, res) => {
+router.delete("/products/:pid", async (req, res) => {
     const { pid } = req.params;
     try {
         const deletedProduct = await productModel.findByIdAndRemove(pid);
